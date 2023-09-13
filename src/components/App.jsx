@@ -51,14 +51,19 @@ filteredContacts = () => {
           <Title>Phonebook</Title>
           <ContactForm 
                  createUser={this.createUser}/>
-          <SubTitle>Contacts</SubTitle>
-          <Filter onChangeFilter={this.onChangeFilter}/>{
-            length > 0 ?
+          <SubTitle>Contacts</SubTitle>{
+          length > 0 ?
+          <Filter 
+                value={this.state.filter} 
+                onChangeFilter={this.onChangeFilter}/>
+            : 
+                <Message>Contact list is empty! Add your first contact.</Message>
+             }{      
+          length > 0 &&    
               <ContactList 
                 contacts={filteredContacts} 
                 onDeleteContact={this.deleteContact}/>
-             : 
-              <Message>Contact list is empty! Add your first contact.</Message>
+             
             
           } 
           </Container>
